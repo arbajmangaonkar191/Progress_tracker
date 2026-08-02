@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps Progress Tracker</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+    margin:0;
+    padding:30px;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+h1{
+    text-align:center;
+    color:#2c3e50;
+}
+
+.progress-box{
+    width:100%;
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+    margin:20px 0;
+}
+
+.progress-bar{
+    height:25px;
+    width:0%;
+    background:#27ae60;
+    text-align:center;
+    color:white;
+    line-height:25px;
+    transition:.5s;
+}
+
+.task{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius:6px;
+}
+
+button{
+    background:#3498db;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2980b9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🚀 DevOps Progress Tracker</h1>
+
+<div class="progress-box">
+    <div class="progress-bar" id="progressBar">0%</div>
+</div>
+
+<div id="tasks"></div>
+
+</div>
+
+<script>
+
+const topics=[
+"Linux",
+"Shell Scripting",
+"Git",
+"GitHub",
+"Docker",
+"AWS",
+"Jenkins",
+"Kubernetes",
+"Terraform",
+"Ansible"
+];
+
+let completed=0;
+
+const taskDiv=document.getElementById("tasks");
+
+topics.forEach(topic=>{
+
+const row=document.createElement("div");
+row.className="task";
+
+row.innerHTML=`
+<span>${topic}</span>
+<button>Complete</button>
+`;
+
+const btn=row.querySelector("button");
+
+btn.onclick=function(){
+
+if(btn.innerText==="Complete"){
+
+btn.innerText="Done ✔";
+btn.style.background="green";
+
+completed++;
+
+let percent=Math.round((completed/topics.length)*100);
+
+let bar=document.getElementById("progressBar");
+bar.style.width=percent+"%";
+bar.innerText=percent+"%";
+
+}
+
+};
+
+taskDiv.appendChild(row);
+
+});
+
+</script>
+
+</body>
+</html>
