@@ -5,4 +5,6 @@ def newfunction()
 
 reset
 
+def added
 
+a+b
