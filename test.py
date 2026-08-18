@@ -8,3 +8,7 @@ reset
 def added
 
 a+b
+
+def sub
+
+a-b
