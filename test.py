@@ -6,6 +6,4 @@ def function add()
         a+b
 }
 
-def multiplication()
-{
-         a
+
